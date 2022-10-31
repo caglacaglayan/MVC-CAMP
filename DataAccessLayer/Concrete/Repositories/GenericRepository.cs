@@ -11,25 +11,25 @@ namespace DataAccessLayer.Concrete.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        Context c = new Context();
-
+        Context _context;
         DbSet<T> _object;
 
-        public GenericRepository()
+        public GenericRepository(Context context)
         {
-            _object = c.Set<T>();
+            _context = context;
+            _object = _context.Set<T>();
         }
 
         public void Delete(T p)
         {
             _object.Remove(p);
-            c.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Insert(T p)
         {
             _object.Add(p);
-            c.SaveChanges();
+            _context.SaveChanges();
         }
 
         public List<T> List()
@@ -44,7 +44,7 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public void Update(T p)
         {
-            c.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }
