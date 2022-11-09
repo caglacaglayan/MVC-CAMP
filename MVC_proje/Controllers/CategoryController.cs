@@ -55,7 +55,7 @@ namespace MVC_proje.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return RedirectToAction("GetCategoryList");
+            return View();
         }
     }
 }

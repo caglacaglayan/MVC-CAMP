@@ -31,12 +31,17 @@ namespace BusinessLayer.Concrete
 
         public void DeleteCategory(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(category);
         }
 
         public void UpdateCategory(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(category);
+        }
+
+        public Category GetByID(int id)
+        {
+            return _categoryDal.Get(x => x.CategoryID == id);
         }
     }
 }
